@@ -9,6 +9,7 @@ import {
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { BG_URL } from "../utils/constants";
 
 const Login = () => {
   const [isSigninForm, setIsSigninForm] = useState(true);
@@ -40,7 +41,7 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed up
-          console.log(userCredential);
+
           const user = userCredential.user;
           updateProfile(user, {
             displayName: username.current.value,
@@ -85,10 +86,7 @@ const Login = () => {
     <div>
       <Header></Header>
       <div className="absolute">
-        <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/a99688ca-33c3-4099-9baa-07a2e2acb398/ca15fd28-b624-4852-8bfe-9cdd5c88475d/IN-en-20240520-popsignuptwoweeks-perspective_alpha_website_small.jpg"
-          alt="logo"
-        />
+        <img src={BG_URL} alt="logo" />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
